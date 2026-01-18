@@ -407,5 +407,7 @@ FodyWeavers.xsd
 # JetBrains Rider
 *.sln.iml
 
+.angular
+
 Noregold.Web/wwwroot/
 /Noregold.Web/wwwroot/favicon.ico
