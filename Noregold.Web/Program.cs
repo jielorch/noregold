@@ -1,4 +1,16 @@
+using Microsoft.EntityFrameworkCore;
+using Noregold.Entities;
+using Noregold.Web.Constants;
+using System;
+
 var builder = WebApplication.CreateBuilder(args);
+
+ConfigurationManager configuration = builder.Configuration;
+
+builder.Services.AddDbContextPool<AppDbContext>(opt =>
+{
+    opt.UseSqlServer(configuration.GetConnectionString(AppConfig.MyApp.DbConnetion));
+});
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -14,6 +26,7 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();

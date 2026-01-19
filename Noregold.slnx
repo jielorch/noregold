@@ -1,3 +1,6 @@
 <Solution>
+  <Project Path="Noregold.Entities/Noregold.Entities.csproj" Id="e61a8912-94ef-47c1-81e7-6cae4a4893b4" />
+  <Project Path="Noregold.Infrastructure/Noregold.Infrastructure.csproj" Id="2fa204e3-2c05-486d-9e6e-60fa6b3758c7" />
+  <Project Path="Noregold.Service/Noregold.Service.csproj" Id="1e45233c-f168-4d0d-904b-6304b2bbdf2a" />
   <Project Path="Noregold.Web/Noregold.Web.csproj" Id="e0998a6e-ecaf-435c-8bca-17c446558e4a" />
 </Solution>
