@@ -1,0 +1,8 @@
+<p>upload-excel works!</p>
+<div [formGroup]="fileForm">
+    <input type="file" name="excelFile" id="excelFile" (change)="onFileSelected($event)">
+</div>
+<br/>
+<div>
+    <button type="button" (click)="upload()">upload</button>
+</div>

@@ -15,6 +15,8 @@ namespace Noregold.Entities
     {
         public IDbConnection Connection => Database.GetDbConnection();
 
+        public DbSet<Inventory> Inventories { get; set; }
+
         public async Task<int> ExecuteScalarAsync(string storedProcedure, DynamicParameters? parameters, bool isStoredProcedure = true)
         {
             var commandType = isStoredProcedure ? CommandType.StoredProcedure : CommandType.Text;
@@ -26,9 +28,10 @@ namespace Noregold.Entities
             return await Database.ExecuteSqlRawAsync(storedProcedure, parameters);
         }
 
-        public async Task<IEnumerable<T>> QueryAsync<T>(string storedProcedure, DynamicParameters? parameters, CommandType commandType)
+        public async Task<IReadOnlyList<T>> QueryAsync<T>(string storedProcedure, DynamicParameters? parameters, CommandType commandType)
         {
-            return await Connection.QueryAsync<T>(storedProcedure, parameters, null, 90, commandType);
+            var result = await Connection.QueryAsync<T>(storedProcedure, parameters, null, 90, commandType);
+            return result.AsList();
         }
 
 

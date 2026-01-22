@@ -1,5 +1,10 @@
 using Microsoft.EntityFrameworkCore;
 using Noregold.Entities;
+using Noregold.Entities.Interface;
+using Noregold.Infrastructure;
+using Noregold.Infrastructure.Interface;
+using Noregold.Service.Interrface;
+using Noregold.Service.Service;
 using Noregold.Web.Constants;
 using System;
 
@@ -11,6 +16,11 @@ builder.Services.AddDbContextPool<AppDbContext>(opt =>
 {
     opt.UseSqlServer(configuration.GetConnectionString(AppConfig.MyApp.DbConnetion));
 });
+
+builder.Services.AddScoped<IAppDbContext, AppDbContext>();
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+builder.Services.AddTransient<IInventoryService, InventoryService>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

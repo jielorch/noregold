@@ -1,6 +1,8 @@
 ﻿using Dapper;
 using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Noregold.Entities.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -13,9 +15,11 @@ namespace Noregold.Entities.Interface
         public IDbConnection Connection { get; }
         DatabaseFacade Database { get; }
 
+        public DbSet<Inventory> Inventories { get; set; }
+
         Task<int> ExecuteSqlRawAsync(string storedProcedure, List<SqlParameter> parameters);
         Task<int> ExecuteScalarAsync(string storedProcedure, DynamicParameters? parameters, bool isStoredProcedure = true);
-        Task<IEnumerable<T>> QueryAsync<T>(string storedProcedure, DynamicParameters? parameters, CommandType commandType);
+        Task<IReadOnlyList<T>> QueryAsync<T>(string storedProcedure, DynamicParameters? parameters, CommandType commandType);
         Task<T?> QuerySingleOrDefaultAsync<T>(string storedProcedure, DynamicParameters? parameters, bool isStoredProcedure = true);
         Task<SqlMapper.GridReader> QueryMultipleAsync(string storedProcedure, DynamicParameters? parameters, bool isStoredProcedure = true);
     }

@@ -8,5 +8,9 @@ export const routes: Routes = [
     {
         path:'inventory',
         loadComponent:() => import('./features/pages/inventory/inventory').then(c => c.Inventory)
+    },
+    {
+        path:'upload',
+        loadComponent:() => import('./features/pages/upload-excel/upload-excel').then(c => c.UploadExcel)
     }
 ];
