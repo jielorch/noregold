@@ -9,6 +9,11 @@ namespace Noregold.Service.Service
 {
     public class InventoryService(IUnitOfWork unitOfWork) : IInventoryService
     {
+        public async Task<int> BulkUploadAsync(string command, DynamicParameters parameters)
+        {
+            return await unitOfWork.InventoryRepository.ExecuteScalarAsync(command, parameters);
+        }
+
         public async Task<IReadOnlyList<T>> GetInventoryDetailsAsync<T>(string command, DynamicParameters parameters)
         {
             var result = await unitOfWork.InventoryRepository.QueryAsync<T>(command, parameters, System.Data.CommandType.Text);

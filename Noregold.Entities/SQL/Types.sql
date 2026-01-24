@@ -15,7 +15,7 @@ BEGIN
 		,WeightGrams DECIMAL(12, 5)
 		,BranchCode VARCHAR(255)
 		,GoldClass VARCHAR(255)
-		,Karat VARCHAR(255)
+		,Karat INT
 		,TrayNumber INT
 		);
 END;

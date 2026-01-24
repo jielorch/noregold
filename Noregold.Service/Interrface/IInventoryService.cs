@@ -8,5 +8,6 @@ namespace Noregold.Service.Interrface
     public interface IInventoryService
     {
         Task<IReadOnlyList<T>> GetInventoryDetailsAsync<T>(string command, DynamicParameters parameters);
+        Task<int> BulkUploadAsync(string command, DynamicParameters parameters);
     }
 }
